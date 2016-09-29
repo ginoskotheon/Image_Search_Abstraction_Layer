@@ -26,7 +26,7 @@ app.get('/:query', function (req, res){
     if(validateURL(url)){
         result = {
             "Term": query,
-            "Date": new Date().toLocaleString();
+            "Date": new Date().toLocaleString()
         };
 
 

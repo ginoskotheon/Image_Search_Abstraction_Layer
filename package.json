@@ -1,7 +1,6 @@
 {
   "name": "image_search_abstraction_layer",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,5 +18,7 @@
   "homepage": "https://github.com/ginoskotheon/Image_Search_Abstraction_Layer#readme",
   "dependencies": {
     "express": "^4.14.0"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
