@@ -34,8 +34,6 @@ module.exports = function(app, History) {
      
     }
 
-   
-
     function makeList(img) {
         return {
             "URL": img.url,
@@ -55,7 +53,7 @@ module.exports = function(app, History) {
 
     function getHistory(req, res) {
     // Check to see if the site is already there
-    History.findOne({}, null, {
+    History.find({}, null, {
       "limit": 10,
       "sort": {
         "when": -1

@@ -2,7 +2,7 @@
 
 var http = require('http');
 var express = require("express");
-var app = express();
+
 var dotenv = require('dotenv').config({silent:true});
 var path = require('path');
 var mongoose = require('mongoose');
@@ -10,6 +10,8 @@ var mpromise = require('mpromise');
 var Schema = mongoose.Schema;
 var api = require('./js/img_find.js');
 var routes = require('./js/index.js');
+var app = express();
+
 
 var historySchema = new Schema({
     term: String,
