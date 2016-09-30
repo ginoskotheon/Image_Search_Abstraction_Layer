@@ -3,73 +3,61 @@
 var http = require('http');
 var express = require("express");
 var app = express();
+var dotenv = require('dotenv').config();
 var path = require('path');
-var Search = require('bing.search');
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var api = require('./js/img_find.js');
 
-app.set('port', (process.env.PORT || 8080));
+var historySchema = new Schema({
+    term: String,
+    when: String
+});
+
+var History = mongoose.model('History', historySchema);
+
+var mongodb = require('mongodb');
+
+//We need to work with "MongoClient" interface in order to connect to a mongodb server.
+var MongoClient = mongodb.MongoClient;
+
+// Connection URL. This is where your mongodb server is running.
+
+//(Focus on This Variable)
+var url = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/image_search';      
+//(Focus on This Variable)
+// mongoose.createConnection(url);
+// Use connect method to connect to the Server
+  MongoClient.connect(url, function (err, db) {
+  if (err) {
+    console.log('Unable to connect to the mongoDB server. Error:', err);
+  } else {
+    console.log('Connection established to', url);
+
+    // do some work here with the database.
+
+    //Close connection
+    db.close();
+  }
+});
+
+api(app, History);
 
 
+
+var port = process.env.PORT || 8080;
 
 app.get('/', function(req, res){
     res.sendFile(path.join(__dirname+'/index.html'));
 });
 
-app.route('/latest')
+// app.get('/:query', 
 
-    .get(getRecent);
+// app.route('/latest')
 
-app.get('/:query', function (req, res){
-    var query = req.params.query;
-    var offset = req.query.offset || 10;
-    var search = new Search(process.env.API_KEY);
-    var result = {};
-    if(validateURL(url)){
-        result = {
-            "Term": query,
-            "Date": new Date().toLocaleString()
-        };
+//     .get(getRecent);
 
 
-        search.images(query, {
-            top: size
-        },
-        function(err, results) {
-            if(err) throw err;
-            res.send(results.map(makeList));
-        }
-        
-        
-        );
-        // res.send(result);
-    //     res.send(
-    //     "<html>" +
-    //     "<head><title>Request URL Microservice</title></head>" +
-    //     "<body>" +
-    //     "<h1>Request Header Parser</h1>" +
-    //    "<p> URL: " + JSON.stringify(result["URL"]) + "</p>" +
-    //    "<p>Hobbit URL: <a href='"+ url +"'>"+ JSON.stringify(result["Hobbit URL"]) +  "</a></p>" +
-    //     "</body>" +
-    //     "</html>"
-    //     );
-    }
- 
-});
-
-
-function makeList(img) {
-    return {
-        "URL": img.url,
-        "Snippet": img.title,
-        "Thumbnail": img.thumbnail.url,
-        "Context": img.sourceUrl
-    };
-}
-
-function getRecent(req, res) {
-    History 
-
-}
-
-app.listen(app.get('port'), function(){
-    console.log('Listening on port', app.get('port'));
+app.listen(port, function(){
+    console.log('Listening on port ' + port);
 });
