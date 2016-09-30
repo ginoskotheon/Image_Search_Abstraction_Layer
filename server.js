@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var mpromise = require('mpromise');
 var Schema = mongoose.Schema;
 var api = require('./js/img_find.js');
-
+require('mongoose').set('debug', true);
 var app = express();
 
 
@@ -31,7 +31,7 @@ var MongoClient = mongodb.MongoClient;
 var url = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/image_search';      
 //(Focus on This Variable)
 
-mongoose.createConnection(url);
+mongoose.connect(url);
 // Use connect method to connect to the Server
   MongoClient.connect(url, function (err, db) {
   if (err) {

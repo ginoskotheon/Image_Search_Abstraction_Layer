@@ -20,6 +20,7 @@ module.exports = function(app, History) {
 
             if(query !== 'favicon.ico') {
                 save(history);
+             
             }
 
             search.images(query, {
@@ -45,6 +46,7 @@ module.exports = function(app, History) {
 
      function save(obj){
         var history = new History(obj);
+        console.log('butts!= ', history);
         history.save(function(err, history){
             if(err) throw err;
             console.log('Saved ' + history)
@@ -60,6 +62,7 @@ module.exports = function(app, History) {
       }
     }, function(err, history) {
       if (err) return console.error(err);
+      console.log(history);
 
       res.send(history.map(function(arg) {
         // Displays only the field we need to show.
@@ -74,19 +77,3 @@ module.exports = function(app, History) {
 
 };
     
-
-
-
-
-
-
-  //     res.send(
-    //     "<html>" +
-    //     "<head><title>Request URL Microservice</title></head>" +
-    //     "<body>" +
-    //     "<h1>Request Header Parser</h1>" +
-    //    "<p> URL: " + JSON.stringify(result["URL"]) + "</p>" +
-    //    "<p>Hobbit URL: <a href='"+ url +"'>"+ JSON.stringify(result["Hobbit URL"]) +  "</a></p>" +
-    //     "</body>" +
-    //     "</html>"
-    //     );
