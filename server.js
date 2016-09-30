@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var mpromise = require('mpromise');
 var Schema = mongoose.Schema;
 var api = require('./js/img_find.js');
-var routes = require('./js/index.js');
+
 var app = express();
 
 
@@ -46,7 +46,7 @@ mongoose.createConnection(url);
   }
 });
 
-routes(app);
+
 api(app, History);
 
 var port = process.env.PORT || 8080;
