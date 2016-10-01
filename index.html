@@ -14,29 +14,28 @@
     <div class="container">
         <div style="font-size: 1.4em;">
             <p>User stories:</p>
-            <p>I can pass a URL as a parameter and I will receive a shortened URL in the JSON response.</p>
-            <p>When I visit that shortened URL, it will redirect me to my original link.</p>
+            <ol>
+                <li>I can get the image URLs, alt text and page urls for a set of images relating to a given search string.</li>
+                <li>I can paginate through the responses by adding a ?offset=2 parameter to the URL.</li>
+                <li>I can paginate through the responses by adding a ?offset=2 parameter to the URL.</li>
             <br>
         </div>
     </div>
     <div class="jumbotron" style="margin-bottom:0;">
         <div class="container">
             <div style="font-size: 1.4em;">
-                <h3>Example usage:</h3>
-                <code>https://little-url.herokuapp.com/new/https://www.google.com</code><br>
-                <code>https://little-url.herokuapp.com/new/http://foo.com:80</code>
-                <h3>Example output:</h3>
+                <h3>Example Query Usage:</h3>
+                <code>https://pacific-caverns-48185.herokuapp.com/bilbo%20baggins?offset=10</code><br>
+                <code>https://pacific-caverns-48185.herokuapp.com/latest</code>
+                <h3>Example Query Output:</h3>
                 <code>
-                    { "original_url":"http://foo.com:80", "short_url":"https://little-url.herokuapp.com/8170" }
+                    [{"URL":"http://static.tumblr.com/8af1e1627bd4789051127b4680866f78/msfoz4f/3Uxmfsusz/tumblr_static_the-hobbit-bilbo-baggins.jpg","Snippet":"Bilbo Baggins, at your service.","Thumbnail":"http://ts2.mm.bing.net/th?id=OIP.M018ea506f6ec2a71a0a0cc774a863e5eo0&pid=15.1","Context":"http://young-bilbo-baggins.tumblr.com/"},{"URL":"https://lh5.googleusercontent.com/-J5yxQFhWtSg/UtEw2MQvtfI/AAAAAAAACKI/kVJMXR96DRw/s1920/Bilbo-Baggins-Wallpaper.png","Snippet":"Bilbo Baggins [ESFJ]","Thumbnail":"http://ts3.mm.bing.net/th?id=OIP.M589cf3ae053c1e369b324ea0f06f0d1fH2&pid=15.1","Context":"http://mtbifiction.wordpress.com/2014/09/14/bilbo-baggins-esfj/"},{"URL":"http://bookriotcom.c.presscdn.com/wp-content/uploads/2014/02/bilbo-baggins.jpg","Snippet":"Bilbo Baggins from THE HOBBIT (here played by Martin Freeman)","Thumbnail":"http://ts3.mm.bing.net/th?id=OIP.M90c7725f9017e8a894c7bce74bdd0472H2&pid=15.1","Context":"http://bookriot.com/2014/02/11/character-math-31-bilbo-baggins-thomas-cromwell-wolf-hall/"},{"URL":"http://3.bp.blogspot.com/-TEw6G10dil4/Ua-l21gHOsI/AAAAAAAAAlM/1KmZ2V9JqpI/s1600/martin-freeman-bilbo-baggins-the-hobbit-pic3.jpg","Snippet":"martin-freeman-bilbo-baggins-the-hobbit-pic3.jpg","Thumbnail":"http://ts3.mm.bing.net/th?id=OIP.M7e5e1d249f23c8538da3afb61444a6b3H1&pid=15.1","Context":"http://vargold.blogspot.com/2013/06/fate-accelerated-mr-baggins-of-bag-end.html"},{"URL":"http://therestishistory.net/wp-content/uploads/2014/12/Bilbo.jpg","Snippet":"Character Comparison: Bilbo Baggins | Middle-Earth Annals","Thumbnail":"http://ts4.mm.bing.net/th?id=OIP.Mc15d0f46efa5ebe7cbc6c8a5370a1626o2&pid=15.1","Context":"http://therestishistory.net/?p=236"},{"URL":"http://images2.fanpop.com/image/photos/9500000/bilbo-bilbo-baggins-9578041-750-515.jpg","Snippet":"Bilbo Baggins bilbo","Thumbnail":"http://ts4.mm.bing.net/th?id=OIP.M09c3c6d3b4bbebb1481ddea1101f73b2H0&pid=15.1","Context":"http://www.fanpop.com/clubs/bilbo-baggins/images/9578041/title/bilbo-photo"},{"URL":"http://4.bp.blogspot.com/-CUb6zwNofLo/TxiebdWMROI/AAAAAAAAJaY/hcZaoc6MJyM/s1600/HBT-008104r4.png","Snippet":"Bilbo Baggins, Burglar Extraordinaire","Thumbnail":"http://ts4.mm.bing.net/th?id=OIP.Mf4c69ad5a58014c4ea7b6042997107baH0&pid=15.1","Context":"http://hole-intheground.blogspot.com/2012/01/bilbo-baggins-burglar-extraordinaire.html"},{"URL":"http://images6.fanpop.com/image/photos/36700000/Bilbo-Baggins-image-bilbo-baggins-36713903-463-750.jpg","Snippet":"Bilbo Baggins - Bilbo Baggins Photo (36713903) - Fanpop","Thumbnail":"http://ts4.mm.bing.net/th?id=OIP.M58be4786746f6959dab13d739a45aa67o0&pid=15.1","Context":"http://fanpop.com/clubs/bilbo-baggins/images/36713903/title/bilbo-baggins-photo"},{"URL":"http://ihdwallpapers.com/download/bilbo_baggins_in_the_hobbit_2-1600x1200.jpg","Snippet":"Bilbo Baggins in The Hobbit 2 HD Wallpaper - iHD Wallpapers","Thumbnail":"http://ts4.mm.bing.net/th?id=OIP.Mb7cb66658b9af060289e67562b028abcH0&pid=15.1","Context":"http://ihdwallpapers.com/bilbo_baggins_in_the_hobbit_2-wallpapers.html"},{"URL":"http://philipwardlow.files.wordpress.com/2012/07/bilbo-baggins.jpg","Snippet":"bilbo-baggins","Thumbnail":"http://ts4.mm.bing.net/th?id=OIP.M1addbd0fe40cdfa3837ecdc8c8619812H0&pid=15.1","Context":"http://philipwardlow.com/2012/07/06/first-look-at-bilbo-baggins-from-the-hobbit/"}]
                 </code>
-                <h3>Usage</h3>
+                <h3>Example Latest Output:</h3>
                 <code>
-                    https://little-url.herokuapp.com/2871
+                    [{"term":"batman","when":"9/30/2016, 9:55:12 PM"},{"term":"cats","when":"9/30/2016, 4:53:12 PM"},{"term":"bilbo baggins","when":"10/1/2016, 1:11:11 AM"},{"term":"bilbo baggins","when":"10/1/2016, 1:11:01 AM"},{"term":"bilbo baggins","when":"10/1/2016, 1:06:07 AM"}]
                 </code>
-                <h3>Will Redirect To:</h3>
-                <code>
-                    https://www.google.com/
-                </code>
+               
             </div>
             
         </div>
